@@ -29,10 +29,13 @@ Esta ferramenta faz a ponte entre o ecossistema desktop (Planilhas Excel com mac
 
 ---
 
+---
+
 ## 📸 Demonstração do Sistema
 
 ### 1. Interface de Preenchimento (Web)
-![Interface de Preenchimento](assets/INTERFACE1.png)
+![Interface de Preenchimento 1](assets/INTERFACE1.png)
+![Interface de Preenchimento 2](assets/INTERFACE2.png)
 
 ### 2. Confirmação de Sucesso
 ![Confirmação de Sucesso](assets/MENSAGEM%20DE%20OS%20GERADA%20COM%20SUCESSO.png)
@@ -44,8 +47,6 @@ Esta ferramenta faz a ponte entre o ecossistema desktop (Planilhas Excel com mac
 
 ### 4. Simulação de E-mail (Outlook)
 ![E-mail Gerado](assets/EMAIL%20GERADO.png)
-
----
 
 ## 🔒 Segurança e Privacidade
 
