@@ -29,13 +29,23 @@ Esta ferramenta faz a ponte entre o ecossistema desktop (Planilhas Excel com mac
 
 ---
 
----
-
 ## 📸 Demonstração do Sistema
 
-| Tela Inicial / Interface Web | Painel de Ordens de Serviço |
+### 1. Interface de Preenchimento (Web)
+![Interface de Preenchimento](assets/INTERFACE1.png)
+
+### 2. Confirmação de Sucesso
+![Confirmação de Sucesso](assets/MENSAGEM%20DE%20OS%20GERADA%20COM%20SUCESSO.png)
+
+### 3. Relatório em PDF Gerado
+| Parte Superior | Parte Inferior |
 | :---: | :---: |
-| ![Interface Web](assets/print-interface.png) | ![Ordens de Serviço](assets/print-sistema.png) |
+| ![PDF Superior](assets/PDF%20GERADO%20SUPERIOR.png) | ![PDF Inferior](assets/PDF%20GERADO%20PARTE%20INFERIOR.png) |
+
+### 4. Simulação de E-mail (Outlook)
+![E-mail Gerado](assets/EMAIL%20GERADO.png)
+
+---
 
 ## 🔒 Segurança e Privacidade
 
