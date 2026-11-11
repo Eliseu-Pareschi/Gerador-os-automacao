@@ -29,6 +29,14 @@ Esta ferramenta faz a ponte entre o ecossistema desktop (Planilhas Excel com mac
 
 ---
 
+---
+
+## 📸 Demonstração do Sistema
+
+| Tela Inicial / Interface Web | Painel de Ordens de Serviço |
+| :---: | :---: |
+| ![Interface Web](assets/print-interface.png) | ![Ordens de Serviço](assets/print-sistema.png) |
+
 ## 🔒 Segurança e Privacidade
 
 Para proteger dados confidenciais da empresa e chaves de acesso privadas, este repositório utiliza um arquivo `.gitignore` rigoroso que bloqueia o envio de:
