@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Ordem de Serviço - CARSO</title>
+    <!-- Google Fonts para um visual limpo e moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { 
+            background-color: #1e1e1e;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 650px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            color: #cfcfcf;
+            font-weight: 500;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #404040;
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 100%;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #2563eb;
+            background-color: #333333;
+            outline: none;
+        }
+
+        input[readonly] {
+            background-color: #181818;
+            color: #888888;
+            border-color: #333333;
+            cursor: not-allowed;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .photos-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-box {
+            flex: 1;
+            background-color: #252525;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px dashed #444;
+        }
+
+        .photo-box input[type="file"] {
+            background: transparent;
+            border: none;
+            padding: 5px 0;
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        button[type="submit"] {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1d4ed8;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        .preview-img {
+            display: none;
+            margin-top: 12px;
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #444;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerar Ordem de Serviço (CARSO)</h2>
+        
+        <form action="/gerar-os" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="numOS">Nº da OS:</label>
+                    <input type="text" id="numOS" name="numOS" required value="1001">
+                </div>
+                <div class="form-group">
+                    <label for="baseKey">Base:</label>
+                    <select id="baseKey" name="baseKey" required>
+                        <option value="">Selecione a Base...</option>
+                        <option value="SP-ADESÃO LESTE">SP-ADESÃO LESTE</option>
+                        <option value="SP-ADESÃO SUL">SP-ADESÃO SUL</option>
+                        <option value="SP-ADESÃO OESTE">SP-ADESÃO OESTE</option>
+                        <option value="SP-ADESÃO ABCDM">SP-ADESÃO ABCDM</option>
+                        <option value="SP-VT LESTE CARMO">SP-VT LESTE CARMO</option>
+                        <option value="SP-VT LESTE MOOCA">SP-VT LESTE MOOCA</option>
+                        <option value="SP-VT OESTE (OSASCO)">SP-VT OESTE (OSASCO)</option>
+                        <option value="SP-VT NORTE">SP-VT NORTE</option>
+                        <option value="SP-ESCRITÓRIO AGUA BRANCA">SP-ESCRITÓRIO AGUA BRANCA</option>
+                        <option value="SP-ESCRITÓRIO REPÚBLICA">SP-ESCRITÓRIO REPÚBLICA</option>
+                        <option value="MG-ADESÃO BH BARRERO">MG-ADESÃO BH BARRERO</option>
+                        <option value="MG-VT BH CASTELO">MG-VT BH CASTELO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label for="endereco">Endereço da Base:</label>
+                <input type="text" id="endereco" name="endereco" readonly placeholder="Preenchido automaticamente...">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="coordenador">Coordenador / Solicitante:</label>
+                    <input type="text" id="coordenador" name="coordenador" readonly placeholder="Preenchido automaticamente...">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail Destinatário:</label>
+                    <input type="text" id="email" name="email" readonly placeholder="Preenchido automaticamente...">
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label for="descricao">Descrição do Problema:</label>
+                <textarea id="descricao" name="descricao" rows="2" required placeholder="Descreva o problema relatado..."></textarea>
+            </div>
+
+            <div class="form-group full">
+                <label for="trabalhosEfetuados">Trabalhos Efetuados (O que foi resolvido):</label>
+                <textarea id="trabalhosEfetuados" name="trabalhosEfetuados" rows="3" required placeholder="Descreva detalhadamente o serviço executado para resolver o problema..."></textarea>
+            </div>
+
+            <div class="form-group full">
+                <label for="atribuidoPara">Atribuído Para:</label>
+                <input type="text" id="atribuidoPara" name="atribuidoPara" value="GUSTAVO / MARCIO " required>
+            </div>
+
+            <!-- NOVO CAMPO DE ÁREA ADICIONADO AQUI -->
+            <div class="form-group full">
+                <label for="area">Área:</label>
+                <input type="text" id="area" name="area" placeholder="Ex: ALMOXARIFADO" required>
+            </div>
+
+            <div class="photos-container">
+                <div class="photo-box">
+                    <label>Foto (ANTES):</label>
+                    <input type="file" name="fotoAntes" accept="image/*" onchange="previewImage(event, 'previewAntes')">
+                    <img id="previewAntes" class="preview-img" src="#" alt="Preview Antes">
+                </div>
+                <div class="photo-box">
+                    <label>Foto (DEPOIS):</label>
+                    <input type="file" name="fotoDepois" accept="image/*" onchange="previewImage(event, 'previewDepois')">
+                    <img id="previewDepois" class="preview-img" src="#" alt="Preview Depois">
+                </div>
+            </div>
+
+            <button type="submit">Gerar Planilha e Criar E-mail</button>
+        </form>
+    </div>
+
+    <script>
+        // Função de Preview de Imagens
+        function previewImage(event, previewId) {
+            const input = event.target;
+            const preview = document.getElementById(previewId);
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Função de Preenchimento Automático via Firebase
+        document.getElementById('baseKey').addEventListener('change', function() {
+            const nomeBase = this.value;
+            const enderecoInput = document.getElementById('endereco');
+            const coordenadorInput = document.getElementById('coordenador');
+            const emailInput = document.getElementById('email');
+
+            if (!nomeBase) {
+                enderecoInput.value = '';
+                coordenadorInput.value = '';
+                emailInput.value = '';
+                return;
+            }
+
+            fetch(`/obter-dados-base/${encodeURIComponent(nomeBase)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        alert(data.erro);
+                    } else {
+                        enderecoInput.value = data.endereco || '';
+                        coordenadorInput.value = data.coordenador || '';
+                        emailInput.value = data.email || '';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados da base:', error);
+                });
+        });
+    </script>
+</body>
+</html>
